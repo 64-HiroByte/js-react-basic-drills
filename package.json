@@ -1,0 +1,7 @@
+{
+  "name": "js-drill",
+  "private": true,
+  "scripts": {
+    "drill": "node ./scripts/drill.js"
+  }
+}
