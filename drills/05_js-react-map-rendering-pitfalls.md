@@ -150,6 +150,20 @@ count は初期値のままクロージャに閉じ込められる。
 更新には関数形式の setState を使う必要がある。
 ```
 
+count の初期値を 0 と仮定する。
+
+初回レンダリング時: count = 0
+
+useEffect が実行される
+↓
+setInterval 内の関数が作られる
+↓
+この関数は count = 0 を「記憶」している（クロージャ）
+↓
+1 秒後: setCount(0 + 1) → count = 1
+2 秒後: setCount(0 + 1) → count = 1 ← また 0+1！
+3 秒後: setCount(0 + 1) → count = 1 ← ずっと 0+1！
+
 </details>
 
 ---
@@ -160,8 +174,16 @@ count は初期値のままクロージャに閉じ込められる。
 <summary>模範解答</summary>
 
 ```jsx
-setCount((prev) => prev + 1);
+useEffect(() => {
+  const id = setInterval(() => {
+    setCount((prev) => prev + 1); // ✅ 関数形式に変更
+  }, 1000);
+  return () => clearInterval(id);
+}, []);
 ```
+
+関数形式の setState を使うことで、クロージャに閉じ込められた古い値ではなく、
+React が渡す最新の state を参照できる。
 
 </details>
 
