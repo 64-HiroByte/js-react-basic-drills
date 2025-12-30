@@ -33,6 +33,15 @@ const numbers = [1, 2, 3, 4];
 // 合計を reduce で求める
 ```
 
+<details>
+<summary>模範解答</summary>
+
+```js
+const sum = numbers.reduce((acc, n) => acc + n, 0);
+```
+
+</details>
+
 ---
 
 ## 問題 2：初期値を省略すると何が起きるか
@@ -42,6 +51,16 @@ const numbers = [1, 2, 3, 4];
 ```js
 numbers.reduce((acc, n) => acc + n);
 ```
+
+<details>
+<summary>模範解答</summary>
+
+初期値がない場合
+
+- acc = 配列の先頭要素
+- 空配列だとエラーになる
+
+</details>
 
 ---
 
@@ -55,6 +74,18 @@ const numbers = [1, 2, 3, 4];
 // 各要素を 2 倍した配列を reduce で作る
 ```
 
+<details>
+<summary>模範解答</summary>
+
+```js
+const result = numbers.reduce((acc, n) => {
+  acc.push(n * 2);
+  return acc;
+}, []);
+```
+
+</details>
+
 ---
 
 ## 問題 4：filter を reduce で書く
@@ -64,6 +95,20 @@ const numbers = [1, 2, 3, 4, 5, 6];
 
 // 偶数だけの配列を reduce で作る
 ```
+
+<details>
+<summary>模範解答</summary>
+
+```js
+const result = numbers.reduce((acc, n) => {
+  if (n % 2 === 0) {
+    acc.push(n);
+  }
+  return acc;
+}, []);
+```
+
+</details>
 
 ---
 
@@ -80,6 +125,18 @@ const users = [
 // { 1: "Taro", 2: "Jiro" } に変換
 ```
 
+<details>
+<summary>模範解答</summary>
+
+```js
+const result = users.reduce((acc, user) => {
+  acc[user.id] = user.name;
+  return acc;
+}, {});
+```
+
+</details>
+
 ---
 
 ## 問題 6：カウント集計（頻出）
@@ -89,6 +146,18 @@ const fruits = ["apple", "banana", "apple", "orange", "banana", "apple"];
 
 // 各フルーツの出現回数を集計
 ```
+
+<details>
+<summary>模範解答</summary>
+
+```js
+const count = fruits.reduce((acc, fruit) => {
+  acc[fruit] = (acc[fruit] || 0) + 1;
+  return acc;
+}, {});
+```
+
+</details>
 
 ---
 
@@ -103,6 +172,21 @@ const users = [
   { name: "Hanako", role: "admin" },
 ];
 ```
+
+<details>
+<summary>模範解答</summary>
+
+```js
+const grouped = users.reduce((acc, user) => {
+  if (!acc[user.role]) {
+    acc[user.role] = [];
+  }
+  acc[user.role].push(user);
+  return acc;
+}, {});
+```
+
+</details>
 
 ---
 
@@ -119,103 +203,8 @@ const cart = [
 // id === 2 の count を +1（reduce で）
 ```
 
----
-
-## 問題 9：state 初期化ロジック
-
-```js
-const fields = ["name", "email", "password"];
-
-// { name: "", email: "", password: "" } を作る
-```
-
----
-
----
-
-# ✅ 模範解答・解説
-
----
-
-## 解答 1
-
-```js
-const sum = numbers.reduce((acc, n) => acc + n, 0);
-```
-
----
-
-## 解答 2
-
-```js
-// 初期値がない場合
-// acc = 配列の先頭要素
-// 空配列だとエラーになる
-```
-
----
-
-## 解答 3
-
-```js
-const result = numbers.reduce((acc, n) => {
-  acc.push(n * 2);
-  return acc;
-}, []);
-```
-
----
-
-## 解答 4
-
-```js
-const result = numbers.reduce((acc, n) => {
-  if (n % 2 === 0) {
-    acc.push(n);
-  }
-  return acc;
-}, []);
-```
-
----
-
-## 解答 5
-
-```js
-const result = users.reduce((acc, user) => {
-  acc[user.id] = user.name;
-  return acc;
-}, {});
-```
-
----
-
-## 解答 6
-
-```js
-const count = fruits.reduce((acc, fruit) => {
-  acc[fruit] = (acc[fruit] || 0) + 1;
-  return acc;
-}, {});
-```
-
----
-
-## 解答 7
-
-```js
-const grouped = users.reduce((acc, user) => {
-  if (!acc[user.role]) {
-    acc[user.role] = [];
-  }
-  acc[user.role].push(user);
-  return acc;
-}, {});
-```
-
----
-
-## 解答 8
+<details>
+<summary>模範解答</summary>
 
 ```js
 const updatedCart = cart.reduce((acc, item) => {
@@ -228,9 +217,20 @@ const updatedCart = cart.reduce((acc, item) => {
 }, []);
 ```
 
+</details>
+
 ---
 
-## 解答 9
+## 問題 9：state 初期化ロジック
+
+```js
+const fields = ["name", "email", "password"];
+
+// { name: "", email: "", password: "" } を作る
+```
+
+<details>
+<summary>模範解答</summary>
 
 ```js
 const initialState = fields.reduce((acc, field) => {
@@ -238,6 +238,8 @@ const initialState = fields.reduce((acc, field) => {
   return acc;
 }, {});
 ```
+
+</details>
 
 ---
 
