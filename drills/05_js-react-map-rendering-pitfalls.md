@@ -148,7 +148,6 @@ useEffect(() => {
 ```txt
 count は初期値のままクロージャに閉じ込められる。
 更新には関数形式の setState を使う必要がある。
-```
 
 count の初期値を 0 と仮定する。
 
@@ -163,6 +162,7 @@ setInterval 内の関数が作られる
 1 秒後: setCount(0 + 1) → count = 1
 2 秒後: setCount(0 + 1) → count = 1 ← また 0+1！
 3 秒後: setCount(0 + 1) → count = 1 ← ずっと 0+1！
+```
 
 </details>
 
