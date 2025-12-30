@@ -84,6 +84,16 @@ const result = numbers.reduce((acc, n) => {
 }, []);
 ```
 
+### 補足説明
+
+このように 1 行で記述するとエラーになる！
+`const result = numbers.reduce((acc, num) => acc.push(num * 2), []);`
+**push メソッドの戻り値は、追加後の配列の長さを返すため。**
+
+無理矢理 1 行で書くならスプレッド構文を使う方法があるが推奨しない
+（毎回新しい配列を作成するためパフォーマンスが悪い）
+`numbers.reduce((acc, num) => [...acc, num * 2], [])`
+
 </details>
 
 ---
@@ -171,7 +181,10 @@ const users = [
   { name: "Jiro", role: "user" },
   { name: "Hanako", role: "admin" },
 ];
+// role ごとにグループ化して表示
 ```
+
+期待される出力 -> { admin: [ 'Taro', 'Hanako' ], user: [ 'Jiro' ] }
 
 <details>
 <summary>模範解答</summary>
@@ -181,7 +194,7 @@ const grouped = users.reduce((acc, user) => {
   if (!acc[user.role]) {
     acc[user.role] = [];
   }
-  acc[user.role].push(user);
+  acc[user.role].push(user.name);
   return acc;
 }, {});
 ```
@@ -216,6 +229,11 @@ const updatedCart = cart.reduce((acc, item) => {
   return acc;
 }, []);
 ```
+
+### 補足説明
+
+イミュータブルな更新をするには、スプレッド構文を使う
+なお、このような処理を行う場合、一般的には map()を使用するのが一般的
 
 </details>
 
