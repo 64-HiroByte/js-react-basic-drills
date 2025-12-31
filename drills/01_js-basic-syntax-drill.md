@@ -3,6 +3,10 @@
 対象：React / Next.js 経験者向け
 目的：JavaScript 構文の基礎を整理し直す
 
+> **関連ドリル**:
+> - map / filter の詳細は **07_js-map-filter-drill.md** を参照
+> - reduce の詳細は **08_js-reduce-drill.md** を参照
+
 ---
 
 ## 問題 1：const / let
@@ -150,7 +154,7 @@ console.log(result);
 
 ## 問題 6：map の落とし穴
 
-次のコードはエラーになります。修正してください。
+次のコードは意図通りに動きません。何が出力されるか説明し、修正してください。
 
 ```js
 const users = [
@@ -168,8 +172,23 @@ console.log(names);
 <details>
 <summary>模範解答・解説</summary>
 
+**出力**: `[undefined, undefined]`
+
+**理由**: `{}` がラベル文として解釈され、何も return されていない。
+
+**修正方法**:
+
 ```js
+// 方法1: 省略形を使う
 const names = users.map((user) => user.name);
+
+// 方法2: return を明示する
+const names = users.map((user) => {
+  return user.name;
+});
+
+// 方法3: オブジェクトを返したい場合は () で囲む
+const names = users.map((user) => ({ name: user.name }));
 ```
 
 `{}` を使う場合は `return` が必要。
@@ -231,7 +250,7 @@ React の state 更新と同じく、オブジェクトは直接変更しない�
 
 ## 問題 9：truthy / falsy
 
-次のコードが `true` を出力する理由を説明し、必要であれば修正してください。
+次のコードが `true` を出力する理由を説明してください。
 
 ```js
 const value = "0";
@@ -246,16 +265,32 @@ if (value) {
 <details>
 <summary>模範解答・解説</summary>
 
-```js
-// "0" は文字列なので truthy
-```
+**理由**: `"0"` は**文字列**なので truthy（空文字 `""` 以外の文字列はすべて truthy）
 
 ```js
-Boolean("0"); // true
-Boolean(0); // false
+Boolean("0"); // true（文字列）
+Boolean(0);   // false（数値のゼロ）
+Boolean("");  // false（空文字）
 ```
 
-数値として判定したい場合は型変換が必要。
+### falsy な値一覧
+
+| 値 | 説明 |
+|---|------|
+| `false` | |
+| `0`, `-0` | 数値のゼロ |
+| `""` | 空文字 |
+| `null` | |
+| `undefined` | |
+| `NaN` | |
+
+**数値として判定したい場合**:
+
+```js
+if (Number(value) !== 0) { ... }
+// または
+if (parseInt(value, 10) !== 0) { ... }
+```
 
 </details>
 

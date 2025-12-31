@@ -1,7 +1,5 @@
 # AI 学習用 解説リクエスト テンプレ集
 
-**保存用ファイル名：`ai-learning-explanation-prompts.md`**
-
 目的：
 
 - AI に「答え」ではなく「思考の補正」をさせる

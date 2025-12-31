@@ -2,6 +2,16 @@
   "name": "js-drill",
   "private": true,
   "scripts": {
-    "drill": "node ./scripts/drill.js"
+    "drill": "node ./scripts/drill.js",
+    "react": "node ./scripts/react-drill.js",
+    "react:build": "vite build"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.0"
   }
 }
