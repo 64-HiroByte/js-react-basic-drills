@@ -1,6 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const { spawn } = require('child_process');
+import fs from 'fs';
+import path from 'path';
+import { spawn } from 'child_process';
 
 const drillNum = process.argv[2];
 
@@ -22,7 +22,7 @@ if (!drillNum) {
 }
 
 const paddedNum = drillNum.padStart(2, '0');
-const drillDir = path.join(__dirname, '..', 'src', 'drills');
+const drillDir = path.join(import.meta.dirname, '..', 'src', 'drills');
 const files = fs.readdirSync(drillDir).filter(f => f.startsWith(paddedNum + '_'));
 
 if (files.length === 0) {
@@ -34,7 +34,7 @@ const drillFile = files[0];
 const drillName = drillFile.replace('.jsx', '');
 
 // main.jsx を更新
-const mainJsxPath = path.join(__dirname, '..', 'src', 'main.jsx');
+const mainJsxPath = path.join(import.meta.dirname, '..', 'src', 'main.jsx');
 const mainContent = `import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './drills/${drillName}'
@@ -52,7 +52,7 @@ console.log('');
 
 // Vite 起動
 const vite = spawn('npx', ['vite'], {
-  cwd: path.join(__dirname, '..'),
+  cwd: path.join(import.meta.dirname, '..'),
   stdio: 'inherit'
 });
 

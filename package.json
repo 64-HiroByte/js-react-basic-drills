@@ -1,5 +1,6 @@
 {
   "name": "js-drill",
+  "type": "module",
   "private": true,
   "scripts": {
     "drill": "node ./scripts/drill.js",

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
+import { pathToFileURL } from "url";
 
 const num = process.argv[2];
 
@@ -10,7 +11,7 @@ if (!num) {
   process.exit(1);
 }
 
-const drillsDir = path.join(__dirname, "..", "drills");
+const drillsDir = path.join(import.meta.dirname, "..", "drills");
 
 // 01_ で始まる js ファイルを探す
 const target = fs
@@ -25,4 +26,4 @@ if (!target) {
 const targetPath = path.join(drillsDir, target);
 
 console.log(`▶ running: ${target}`);
-require(targetPath);
+await import(pathToFileURL(targetPath).href);
