@@ -273,7 +273,7 @@ state ─────────────────→ nextState（新規�
 
 ---
 
-# 🔹 Step 5：reduce での安全な更新
+# 🔹 Step 5：map と reduce の使い分け
 
 ## 問題 5：条件付き更新
 
@@ -289,7 +289,9 @@ const cart = [
 // cart    → [{ id: 1, count: 1 }, { id: 2, count: 2 }]（元のまま）
 ```
 
-質問：元の cart を変更せず、上記の期待する結果になるコードを書いてください。
+質問：
+1. 元の cart を変更せず、上記の期待する結果になるコードを書いてください。
+2. この処理は map と reduce、どちらを使うべきですか？
 
 <details>
 <summary>模範解答</summary>

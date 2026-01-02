@@ -1,17 +1,17 @@
 /**
- * 04_js-condition-loop-drill
+ * 02_js-condition-loop-drill
  *
  * 対応する問題ファイル:
- * 04_js-condition-loop-drill.md
+ * 02_js-condition-loop-drill.md
  *
  * 使い方:
  * - 解きたい問題だけコメントアウトを外す
  *
  * 実行方法:
- * npm run drill 04
+ * npm run drill 02
  */
 
-// --- 問題 1 ---
+// --- 問題 1：基本の if / else ---
 // const score = 75;
 
 // 80以上: "A"
@@ -33,14 +33,14 @@
  * （必ずどれかに当てはまるため）
  */
 
-// --- 問題 2 ---
+// --- 問題 2：三項演算子 ---
 // const isLogin = true;
 
 // isLogin が true の場合 "Welcome"、false の場合 "Please login"
 // const message = isLogin ? "Wellcome" : "Pleace login";
 // console.log(message);
 
-// --- 問題 3 ---
+// --- 問題 3：truthy / falsy ---
 // const value = "";
 
 // if (value) {
@@ -50,7 +50,7 @@
 // }
 // 問題文のままでOK（空文字はfalthyな値）
 
-// --- 問題 4 ---
+// --- 問題 4：switch 文 ---
 // const role = "admin";
 /**
  * admin -> "管理者"
@@ -74,13 +74,13 @@
 // }
 // console.log(label);
 
-// --- 問題 5 ---
+// --- 問題 5：for ループ（基本） ---
 // 0 から 4 まで出力
 // for (let i = 0; i < 5; i++) {
 //   console.log(i);
 // }
 
-// --- 問題 6 ---
+// --- 問題 6：for...of（配列） ---
 // const fruits = ["apple", "banana", "orange"];
 
 // 各要素を出力
@@ -92,7 +92,7 @@
  * letは使わない。
  */
 
-// --- 問題 7 ---
+// --- 問題 7：for...in（オブジェクト） ---
 // const user = { name: "Taro", age: 20 };
 
 // key と value を出力（for in を使用）
@@ -110,7 +110,7 @@
 //   console.log(key, value);
 // }
 
-// --- 問題 8 ---
+// --- 問題 8：while ループ ---
 // let count = 3;
 
 // count が 0 になるまで出力
@@ -119,14 +119,14 @@
 //   count--;
 // }
 
-// --- 問題 9 ---
+// --- 問題 9：break / continue ---
 // 1〜5 を出力。ただし 3 はスキップ
 // for (let i = 1; i < 6; i++) {
 //   if (i === 3) continue;
 //   console.log(i);
 // }
 
-// --- 問題 10 ---
+// --- 問題 10：React で避けたいループ ---
 items.forEach((item) => {
   setState(item);
 });

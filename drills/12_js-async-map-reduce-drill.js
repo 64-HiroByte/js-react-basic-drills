@@ -1,17 +1,17 @@
 /**
- * 06_js-async-map-reduce-drill
+ * 12_js-async-map-reduce-drill
  *
  * 対応する問題ファイル:
- * 06_js-async-map-reduce-drill.md
+ * 12_js-async-map-reduce-drill.md
  *
  * 使い方:
  * - 解きたい問題だけコメントアウトを外す
  *
  * 実行方法:
- * npm run drill 06
+ * npm run drill 12
  */
 
-// --- 問題 1 ---
+// --- 問題 1：map に async を書くと何が返る？ ---
 // const ids = [1, 2, 3];
 
 // const results = ids.map(async (id) => {
@@ -27,7 +27,7 @@
  * async 関数は必ず Promise を返すため、map の戻り値は Promise[] になる。
  */
 
-// --- 問題 2 ---
+// --- 問題 2：Promise[] を値の配列にする ---
 const ids = [1, 2, 3];
 
 const main = async () => {

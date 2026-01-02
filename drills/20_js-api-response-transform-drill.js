@@ -1,12 +1,26 @@
 /**
- * 15_js-api-response-transform-drill
+ * 20_js-api-response-transform-drill
+ *
+ * 実務 API レスポンス整形・総合演習（非同期 × 設計）
  *
  * 対応する問題ファイル:
- * 15_js-api-response-transform-drill.md
+ * 20_js-api-response-transform-drill.md
  *
  * 使い方:
  * - 解きたい問題だけコメントアウトを外す
  *
  * 実行方法:
- * npm run drill 15
+ * npm run drill 20
  */
+
+// --- 問題 1：そのままでは使えない API ---
+
+// --- 問題 2：同期版 実装 ---
+
+// --- 問題 3：追加 fetch が必要な場合 ---
+
+// --- 問題 4：どこでやるべきか ---
+
+// --- 問題 5：危険な例 ---
+
+// --- 問題 6：ユーザーと投稿を結合する ---
