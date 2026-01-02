@@ -437,18 +437,18 @@ onChange?.(e.target.value);
 
 ## 問題 12：API データの表示
 
-次のコンポーネントで、データが読み込まれるまで「読み込み中」を表示し、
-読み込み後は `data.items` の件数を表示してください。
+次のコンポーネントで、`data` が null/undefined の場合は「データが存在しません」を表示し、
+それ以外は `data.items` の件数を表示してください。
 
 ```jsx
 function ItemCount({ data }) {
-  // data が null/undefined の場合は「読み込み中」
+  // data が null/undefined の場合は「データが存在しません」
   // data.items が存在しない場合は 0 件
   return <p>{/* ??? */}</p>;
 }
 
 // 使用例
-<ItemCount data={null} />                        // "読み込み中"
+<ItemCount data={null} />                        // "データが存在しません"
 <ItemCount data={{}} />                          // "0 件"
 <ItemCount data={{ items: ["a", "b", "c"] }} />  // "3 件"
 ```
@@ -459,7 +459,7 @@ function ItemCount({ data }) {
 ```jsx
 function ItemCount({ data }) {
   if (data == null) {
-    return <p>読み込み中</p>;
+    return <p>データが存在しません</p>;
   }
 
   const count = data.items?.length ?? 0;
