@@ -1,6 +1,8 @@
 /**
  * 12_js-async-map-reduce-drill
  *
+ * 非同期 × map / reduce 完全攻略ドリル（Promise.all / await）
+ *
  * 対応する問題ファイル:
  * 12_js-async-map-reduce-drill.md
  *
@@ -20,44 +22,76 @@
 
 // console.log(results);
 
-/**  出力のされ方
- * [ Promise { 2 }, Promise { 4 }, Promise { 6 } ]
- *
- * results は Promise の配列（Promise[]）になる。
- * async 関数は必ず Promise を返すため、map の戻り値は Promise[] になる。
- */
-
 // --- 問題 2：Promise[] を値の配列にする ---
-const ids = [1, 2, 3];
+// const ids = [1, 2, 3];
 
-const main = async () => {
-  const results = ids.map(async (id) => {
-    return id * 2;
-  });
-  const values = await Promise.all(results);
-  console.log(values);
-};
+// const main = async () => {
+//   const results = ids.map(async (id) => {
+//     return id * 2;
+//   });
+//   const values = await Promise.all(results);
+//   console.log(values);
 
-main();
+//   /** 別解（結果は同じ）
+//    * const results = await Promise.all(
+//    *   ids.map(async (id) => {
+//    *     return id * 2;
+//    *   })
+//    * );
+//    * console.log(results);
+//    */
+// };
 
-/**
- * 解説：
- * - map + async は Promise の配列を返す
- * - Promise.all() で全ての Promise が解決するのを待つ
- * - await Promise.all() の戻り値は、各 Promise の結果の配列
- *
- * 実務での使用例：
- * const fetchUsers = async (ids) => {
- *   const users = await Promise.all(
- *     ids.map(async (id) => {
- *       const res = await fetch(`/api/users/${id}`);
- *       return res.json();
- *     })
- *   );
- *   return users;
- * };
- *
- * 注意：
- * この例の id * 2 は同期処理なので、本来 async は不要。
- * 「async を付けると Promise[] になる」ことを示すための例。
- */
+// main();
+
+// --- 問題 3：API を複数取得する ---
+// const urls = [
+//   "https://jsonplaceholder.typicode.com/users/1",
+//   "https://jsonplaceholder.typicode.com/users/2",
+//   "https://jsonplaceholder.typicode.com/users/3",
+// ];
+// const fetchUsers = async (urls) => {
+//   const data = await Promise.all(
+//     urls.map(async (url) => {
+//       const res = await fetch(url);
+//       return res.json();
+//     })
+//   );
+//   return data;
+// };
+// // console.log(fetchUsers(urls)); // ❌️ これだけでは <pending> となる
+// fetchUsers(urls).then((data) => {
+//   console.log(data);
+// });
+
+// --- 問題 4：並列実行と直列実行の違い ---
+// 共通の準備
+// const items = [1, 2, 3];
+// const doAsync = async (item) => {
+//   console.log(`開始: ${item}`);
+//   await new Promise((resolve) => setTimeout(resolve, 1000)); // 1秒待つ
+//   console.log(`完了: ${item}`);
+//   return item * 2;
+// };
+
+// --- A: Promise.all ---
+// const runA = async () => {
+//   const results = await Promise.all(items.map((item) => doAsync(item)));
+//   console.log(results);
+// };
+// runA();
+
+// // --- B: for...of ---
+// const runB = async () => {
+//   const results = [];
+//   for (const item of items) {
+//     const result = await doAsync(item);
+//     results.push(result);
+//   }
+//   console.log(results);
+// };
+// runB();
+
+// --- 問題 5：なぜこれは危険か ---
+
+// --- 問題 6：直列処理が必要なケース ---

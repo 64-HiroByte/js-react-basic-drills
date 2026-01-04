@@ -1,7 +1,5 @@
 # 実務 API レスポンス整形・総合演習（非同期 × 設計）
 
-**保存用ファイル名：`js-api-response-transform-drill.md`**
-
 対象：React / Next.js 経験者
 目的：非同期処理・配列操作・責務分離を「実務判断」として統合する
 

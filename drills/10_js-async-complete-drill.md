@@ -1,7 +1,5 @@
 # 非同期処理 完全反復ドリル（Promise / async-await）
 
-**保存用ファイル名：`js-async-complete-drill.md`**
-
 対象：JavaScript / React / Next.js 経験者
 目的：非同期処理を「雰囲気」ではなく **実行順・戻り値・設計** で理解する
 

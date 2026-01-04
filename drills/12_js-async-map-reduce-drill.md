@@ -1,7 +1,5 @@
 # 非同期 × map / reduce 完全攻略ドリル（Promise.all / await）
 
-**保存用ファイル名：`js-async-map-reduce-drill.md`**
-
 対象：React / Next.js 経験者
 目的：配列 × 非同期処理を安全に設計・実装できるようにする
 
@@ -313,9 +311,9 @@ const result = await Promise.all(items.map((item) => doAsync(item)));
 
 ---
 
-## 問題 6：reduce × async を使うべきケース
+## 問題 6：直列処理が必要なケース
 
-reduce × async を使ってもよいケースを答えてください。
+直列処理（for...of / while）を使うべきケースを答えてください。
 
 <details>
 <summary>模範解答</summary>
@@ -349,8 +347,12 @@ const fetchAllPages = async () => {
 
 ### 結論：
 
-- **99% のケースは map + Promise.all で解決できる**
-- reduce × async は「前の結果がないと次に進めない」ときだけ
+- **並列で実行できるなら map + Promise.all を使う**
+- 直列処理が必要な場面：
+  - 前の結果がないと次に進めない（ページネーションなど）
+  - API レート制限がある
+  - 順序が重要な処理
+- 直列処理には for...of や while を使う（reduce × async は避ける）
 
 </details>
 

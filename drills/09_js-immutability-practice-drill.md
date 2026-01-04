@@ -1,7 +1,5 @@
 # Immutability 実践ドリル（事故例ベース）
 
-**保存用ファイル名：`js-immutability-practice-drill.md`**
-
 対象：React / Next.js 経験者
 目的：破壊的変更によるバグを即座に見抜き、安全な更新を書けるようにする
 
